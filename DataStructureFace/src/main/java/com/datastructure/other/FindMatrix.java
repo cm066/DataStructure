@@ -12,6 +12,8 @@ public class FindMatrix {
                 {1,2,5,6},
                 {2,5,7,9},
                 {4,6,8,10}};
+        boolean b = findMatrix(arr, 50);
+        System.out.println(b);
     }
 
     /**
@@ -20,7 +22,21 @@ public class FindMatrix {
      * @param arr
      * @param target
      */
-    public static void findMatrix(int[][] arr,int target){
+    public static boolean findMatrix(int[][] arr,int target){
 
+        //基础条件就不判断了，只写核心代码
+//        boolean flag = false;
+        int row = 0;
+        int col = arr[0].length-1;
+        while (row<=arr.length-1&&col>=0){
+            if (arr[row][col] == target){
+                return true;
+            }else if (target < arr[row][col]){
+                col--;
+            }else {
+                row++;
+            }
+        }
+        return false;
     }
 }
