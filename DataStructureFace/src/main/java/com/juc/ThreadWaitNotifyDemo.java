@@ -1,30 +1,69 @@
 package com.juc;
 
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+//import java.util.concurrent.locks.ReentrantLock;
+
 class AirCondition{
 
     private int number = 0;
-    public synchronized void increment() throws InterruptedException {
-
-        //判断 如果采用if会出现虚假唤醒，那是因为if可能多个线程进入if了，然后
-        while (number != 0){
-            this.wait();
+    private Lock lock = new ReentrantLock();
+    private Condition condition = lock.newCondition();
+    public  void increment() throws InterruptedException {
+        lock.lock();
+        try {
+            //判断 如果采用if会出现虚假唤醒，那是因为if可能多个线程进入if了，然后
+            while (number != 0){
+                condition.await();
+            }
+            //干活
+            number++;
+            System.out.println(Thread.currentThread().getName()+"\t"+number);
+            //通知
+            condition.signalAll();
+        }finally {
+            lock.unlock();
         }
-        //干活
-        number++;
-        System.out.println(Thread.currentThread().getName()+"\t"+number);
-        //通知
-        this.notifyAll();
-    }
-    public synchronized void decrement() throws InterruptedException {
 
-       while (number == 0){
-            this.wait();
-        }
-        number--;
-        System.out.println(Thread.currentThread().getName()+"\t"+number);
-        this.notifyAll();
     }
+    public  void decrement() throws InterruptedException {
+
+        lock.lock();
+        try {
+            while (number == 0){
+                condition.await();
+            }
+            number--;
+            System.out.println(Thread.currentThread().getName()+"\t"+number);
+            condition.signalAll();
+        }finally {
+            lock.unlock();
+        }
+
+    }
+//    public synchronized void increment() throws InterruptedException {
+//
+//        //判断 如果采用if会出现虚假唤醒，那是因为if可能多个线程进入if了，然后
+//        while (number != 0){
+//            this.wait();
+//        }
+//        //干活
+//        number++;
+//        System.out.println(Thread.currentThread().getName()+"\t"+number);
+//        //通知
+//        this.notifyAll();
+//    }
+//    public synchronized void decrement() throws InterruptedException {
+//
+//       while (number == 0){
+//            this.wait();
+//        }
+//        number--;
+//        System.out.println(Thread.currentThread().getName()+"\t"+number);
+//        this.notifyAll();
+//    }
 //    public synchronized void increment() throws InterruptedException {
 //
 //        //判断
