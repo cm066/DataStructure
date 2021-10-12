@@ -6,30 +6,33 @@ package com.datastructure.linked;
  */
 public class ReverseLinkedList {
 
-    public class Node{
+    public class Node {
         public int value;
         public Node next;
 
-        public Node(int data){
+        public Node(int data) {
             this.value = data;
         }
-        public Node(){
+
+        public Node() {
 
         }
+
         //打印链表
-        public  void pint(Node head){
-            while (head != null){
-                System.out.print(head.value+"->");
+        public void pint(Node head) {
+            while (head != null) {
+                System.out.print(head.value + "->");
                 head = head.next;
             }
         }
     }
 
-    public  class DoubleNode{
+    public class DoubleNode {
         public int value;
         public DoubleNode next;
         public DoubleNode last;
-        public DoubleNode(int data){
+
+        public DoubleNode(int data) {
             this.value = data;
         }
     }
@@ -49,15 +52,15 @@ public class ReverseLinkedList {
     }
 
     /**
-     *
      * 双向链表的反转
+     *
      * @param head
      * @return
      */
-    public static DoubleNode reverseDoubleNode(DoubleNode head){
+    public static DoubleNode reverseDoubleNode(DoubleNode head) {
         DoubleNode pre = null;
         DoubleNode next = null;
-        while (head != null){
+        while (head != null) {
             next = head.next;
             head.next = pre;
             head.last = next;
@@ -70,13 +73,14 @@ public class ReverseLinkedList {
 
     /**
      * 单向链表的反转
+     *
      * @param head
      * @return
      */
-    public static Node reverseNode(Node head){
+    public static Node reverseNode(Node head) {
         Node pre = null;
         Node next = null;
-        while (head != null){
+        while (head != null) {
             next = head.next;
             head.next = pre;
             pre = head;
@@ -88,23 +92,24 @@ public class ReverseLinkedList {
     /**
      * 删除单链表给定的一个节点，并返回删除后的链表
      * 链表中可能出现节点的值相等的节点
+     *
      * @param head
      * @return
      */
-    public static Node remove(Node head,int num){
+    public static Node remove(Node head, int num) {
         //这里的作用是万一开头连续的都是相同的就可以直接删除掉
-        while (head != null){
-            if (head.value != num){
+        while (head != null) {
+            if (head.value != num) {
                 break;
             }
             head = head.next;
         }
         Node pre = head;
         Node cur = head;
-        while (cur != null){
-            if (cur.value == num){
+        while (cur != null) {
+            if (cur.value == num) {
                 pre.next = cur.next;
-            }else {
+            } else {
                 pre = cur;
             }
             cur = cur.next;

@@ -11,18 +11,18 @@ public class SemaphoreDemo {
     public static void main(String[] args) {
         Semaphore semaphore = new Semaphore(3);
         for (int i = 1; i <= 6; i++) {
-            new Thread(()->{
+            new Thread(() -> {
                 try {
                     semaphore.acquire();
-                    System.out.println("第"+Thread.currentThread().getName()+"个获得车位");
+                    System.out.println("第" + Thread.currentThread().getName() + "个获得车位");
                     TimeUnit.SECONDS.sleep(4);
-                    System.out.println("第"+Thread.currentThread().getName()+"个离开车位");
+                    System.out.println("第" + Thread.currentThread().getName() + "个离开车位");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }finally {
+                } finally {
                     semaphore.release();
                 }
-            },String.valueOf(i)).start();
+            }, String.valueOf(i)).start();
         }
     }
 }

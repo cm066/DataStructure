@@ -16,21 +16,22 @@ public class IsValidBST {
 
     /**
      * 第一种方法，因为搜索二叉树的中序遍历是升序的，所以采用一个集合装，遍历完二叉树，在遍历集合
+     *
      * @param root
      * @return
      */
-    public  boolean isValidBST(TreeNode root) {
+    public boolean isValidBST(TreeNode root) {
         Deque<TreeNode> stack = new LinkedList<TreeNode>();
         double inorder = -Double.MAX_VALUE;
-        while (!stack.isEmpty() || root != null){
+        while (!stack.isEmpty() || root != null) {
 
             //先压左子树
-            while (root != null){
+            while (root != null) {
                 stack.push(root);
                 root = root.left;
             }
             root = stack.pop();
-            if ( root.val <= inorder){
+            if (root.val <= inorder) {
                 return false;
             }
             inorder = root.val;

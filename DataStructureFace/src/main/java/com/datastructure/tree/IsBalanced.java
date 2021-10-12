@@ -12,10 +12,10 @@ public class IsBalanced {
     }
 
     public boolean isBalanced(TreeNode root) {
-        if (root == null){
+        if (root == null) {
             return true;
-        }else {
-            return Math.abs(height(root.left)-height(root.right) )<=1 && isBalanced(root.left) && isBalanced(root.right);
+        } else {
+            return Math.abs(height(root.left) - height(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
         }
     }
 

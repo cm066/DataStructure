@@ -18,14 +18,14 @@ public class ShellSort {
         Swap.printArr(nums);
     }
 
-    public static void shellSort(int[] arr){
+    public static void shellSort(int[] arr) {
 
         int N = arr.length;
-        for (int gap = N /2;gap >0;gap /= 2){
+        for (int gap = N / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < N; i++) {
                 int j = i;
-                while (j - gap >= 0&& arr[j] <arr[j-gap]){
-                    Swap.swap(arr,j,j-gap);
+                while (j - gap >= 0 && arr[j] < arr[j - gap]) {
+                    Swap.swap(arr, j, j - gap);
                     j -= gap;
                 }
             }

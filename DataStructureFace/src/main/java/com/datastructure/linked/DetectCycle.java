@@ -6,9 +6,10 @@ package com.datastructure.linked;
 public class DetectCycle {
 
     /**
-     *采用的是快慢指针的方式来实现的，空间复杂度为O(1)
+     * 采用的是快慢指针的方式来实现的，空间复杂度为O(1)
      * 思想就是想利用快慢指针的思想去判断是否有环，如果有环，才利用一个临时指针去找慢指针
      * 两个指针相遇的时候就是第一个入环节点
+     *
      * @param head
      * @return
      */
@@ -17,16 +18,17 @@ public class DetectCycle {
             return null;
         }
         ListNode slow = head, fast = head;
-        while (fast != null){
-            slow = slow.next;;
-            if (fast.next != null){
+        while (fast != null) {
+            slow = slow.next;
+            ;
+            if (fast.next != null) {
                 fast = fast.next.next;
-            }else {
+            } else {
                 return null;
             }
-            if (fast == slow){
+            if (fast == slow) {
                 ListNode res = head;
-                while (res != slow){
+                while (res != slow) {
                     res = res.next;
                     slow = slow.next;
                 }

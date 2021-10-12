@@ -14,16 +14,17 @@ public class FindBitCount {
 
     /**
      * 解题思路
-     *  就是二进制运算 然后一直到最右边的1
+     * 就是二进制运算 然后一直到最右边的1
+     *
      * @param N
      * @return
      */
-    public static int findBitCount(int N){
+    public static int findBitCount(int N) {
         int count = 0;
-        while (N != 0){
+        while (N != 0) {
             int one = N & ((~N) + 1);
             count++;
-            N ^=  one;
+            N ^= one;
         }
         return count;
     }

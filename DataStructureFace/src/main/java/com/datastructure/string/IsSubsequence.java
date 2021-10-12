@@ -11,6 +11,7 @@ public class IsSubsequence {
         String t = "abcx";
         System.out.println(isSubsequence1(s, t));
     }
+
     public static boolean isSubsequence(String s, String t) {
         return false;
     }
@@ -21,15 +22,15 @@ public class IsSubsequence {
         char[] s2 = t.toCharArray();
         int i = 0;
         int j = 0;
-        while (i < s1.length && j < s2.length){
-            if (s1[i] == s2[j]){
+        while (i < s1.length && j < s2.length) {
+            if (s1[i] == s2[j]) {
                 i++;
                 j++;
-            }else {
+            } else {
                 i++;
             }
         }
-        if (j == s2.length){
+        if (j == s2.length) {
             return true;
         }
         return false;

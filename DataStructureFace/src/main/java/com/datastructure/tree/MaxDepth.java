@@ -16,21 +16,23 @@ public class MaxDepth {
 
     /**
      * 采用递归的方式来实现的，深度优先
+     *
      * @param root
      * @return
      */
     public int maxDepth(TreeNode root) {
-        if (root == null){
+        if (root == null) {
             return 0;
-        }else {
+        } else {
             int leftDeep = maxDepth(root.left);
             int rigthDeep = maxDepth(root.right);
-            return Math.max(leftDeep,rigthDeep)+1;
+            return Math.max(leftDeep, rigthDeep) + 1;
         }
     }
 
     /**
      * 广度优先，每次遍历完一层以后就将保存高度的变量加一
+     *
      * @param root
      * @return
      */
@@ -42,14 +44,14 @@ public class MaxDepth {
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root);
         int ans = 0;
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-                if (node.left != null){
+                if (node.left != null) {
                     queue.add(node.left);
                 }
-                if (node.right != null){
+                if (node.right != null) {
                     queue.add(node.right);
                 }
             }

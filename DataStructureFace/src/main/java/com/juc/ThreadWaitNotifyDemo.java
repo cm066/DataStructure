@@ -6,39 +6,41 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 //import java.util.concurrent.locks.ReentrantLock;
 
-class AirCondition{
+class AirCondition {
 
     private int number = 0;
     private Lock lock = new ReentrantLock();
     private Condition condition = lock.newCondition();
-    public  void increment() throws InterruptedException {
+
+    public void increment() throws InterruptedException {
         lock.lock();
         try {
             //判断 如果采用if会出现虚假唤醒，那是因为if可能多个线程进入if了，然后
-            while (number != 0){
+            while (number != 0) {
                 condition.await();
             }
             //干活
             number++;
-            System.out.println(Thread.currentThread().getName()+"\t"+number);
+            System.out.println(Thread.currentThread().getName() + "\t" + number);
             //通知
             condition.signalAll();
-        }finally {
+        } finally {
             lock.unlock();
         }
 
     }
-    public  void decrement() throws InterruptedException {
+
+    public void decrement() throws InterruptedException {
 
         lock.lock();
         try {
-            while (number == 0){
+            while (number == 0) {
                 condition.await();
             }
             number--;
-            System.out.println(Thread.currentThread().getName()+"\t"+number);
+            System.out.println(Thread.currentThread().getName() + "\t" + number);
             condition.signalAll();
-        }finally {
+        } finally {
             lock.unlock();
         }
 
@@ -98,7 +100,7 @@ class AirCondition{
 public class ThreadWaitNotifyDemo {
     public static void main(String[] args) {
         AirCondition airCondition = new AirCondition();
-        new Thread(()->{
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     airCondition.increment();
@@ -106,9 +108,9 @@ public class ThreadWaitNotifyDemo {
                     e.printStackTrace();
                 }
             }
-        },"A").start();
+        }, "A").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     airCondition.decrement();
@@ -116,9 +118,9 @@ public class ThreadWaitNotifyDemo {
                     e.printStackTrace();
                 }
             }
-        },"B").start();
+        }, "B").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     airCondition.increment();
@@ -126,9 +128,9 @@ public class ThreadWaitNotifyDemo {
                     e.printStackTrace();
                 }
             }
-        },"C").start();
+        }, "C").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     airCondition.decrement();
@@ -136,6 +138,6 @@ public class ThreadWaitNotifyDemo {
                     e.printStackTrace();
                 }
             }
-        },"D").start();
+        }, "D").start();
     }
 }

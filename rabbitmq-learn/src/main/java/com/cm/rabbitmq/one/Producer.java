@@ -9,7 +9,7 @@ import java.util.concurrent.TimeoutException;
 
 public class Producer {
 
-    public static final String QUEUE_NAME ="hello";
+    public static final String QUEUE_NAME = "hello";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -26,8 +26,8 @@ public class Producer {
          * 4、是否自动删除，最后一个消费这端开连接以后，该队一句是否自动删除
          * 5、其它参数
          */
-        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
-        String message ="hello world";
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        String message = "hello world";
         /**
          * 发送一个消费
          * 1、发送到那个交换机
@@ -35,7 +35,7 @@ public class Producer {
          * 3、其他参数
          * 4、发送消息的消息体
          */
-        channel.basicPublish("",QUEUE_NAME,null,message.getBytes());
+        channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
         System.out.println("消息发送完毕");
     }
 }

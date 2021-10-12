@@ -26,64 +26,64 @@ public class BubbleSort {
 
     /**
      * 解题思路：
-     *  1、从未排序的数组中进行比较相邻两个数的交互
+     * 1、从未排序的数组中进行比较相邻两个数的交互
      *
      * @param arr
      */
-    public static void bubbleSort(int[] arr){
+    public static void bubbleSort(int[] arr) {
         //进行基础的判断
-        if (null == arr || arr.length <2){
+        if (null == arr || arr.length < 2) {
             return;
         }
         //外层for循环就是控制在那个范围内进行交互，即为把以排好序的数去除
-        for (int i = arr.length -1; i >0 ; i--) {
+        for (int i = arr.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[j+1]){
-                    Swap.swap(arr,j,j+1);
+                if (arr[j] > arr[j + 1]) {
+                    Swap.swap(arr, j, j + 1);
                 }
             }
         }
     }
 
-    public static void bubbleSort1(int[] arr){
+    public static void bubbleSort1(int[] arr) {
         //进行基础的判断
-        if (null == arr || arr.length <2){
+        if (null == arr || arr.length < 2) {
             return;
         }
         for (int i = 0; i < arr.length; i++) {
-            for (int j = i+1; j < arr.length; j++) {
-                if (arr[j-1] > arr[j]){
-                    Swap.swap(arr,j-1,j);
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j - 1] > arr[j]) {
+                    Swap.swap(arr, j - 1, j);
                 }
             }
         }
     }
 
-    public static void selectSort(int[] arr){
+    public static void selectSort(int[] arr) {
         //进行基础的判断
-        if (null == arr || arr.length <2){
+        if (null == arr || arr.length < 2) {
             return;
         }
         for (int i = 0; i < arr.length; i++) {
             int min = i;
             //每次都找最小的数
-            for (int j = i+1; j < arr.length; j++) {
+            for (int j = i + 1; j < arr.length; j++) {
                 min = arr[min] > arr[j] ? j : min;
             }
-            if (min == i){
+            if (min == i) {
                 continue;
-            }else {
-                Swap.swap(arr,i,min);
+            } else {
+                Swap.swap(arr, i, min);
             }
         }
     }
 
-    public static void insertSort(int[] arr){
+    public static void insertSort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int j = i;
             int temp = arr[i];
-            while (j > 0 && temp<arr[j-1]){
-                arr[j] = arr[j-1];
+            while (j > 0 && temp < arr[j - 1]) {
+                arr[j] = arr[j - 1];
                 j--;
             }
             arr[j] = temp;

@@ -10,29 +10,28 @@ public class IsFullTree {
 
     }
 
-    public static boolean isFull(TreeNode node){
+    public static boolean isFull(TreeNode node) {
         Info process = process(node);
-        return process.nodes == (1<< process.height -1);
+        return process.nodes == (1 << process.height - 1);
     }
 
-    public static Info process(TreeNode node){
-        if (node == null){
-            return new Info(0,0);
+    public static Info process(TreeNode node) {
+        if (node == null) {
+            return new Info(0, 0);
         }
         Info leftNode = process(node.left);
         Info rightNode = process(node.right);
-        int height = Math.max(leftNode.height ,rightNode.height)+1;
-        int nodes = leftNode.nodes + rightNode.nodes +1;
-        return new Info(height,nodes);
+        int height = Math.max(leftNode.height, rightNode.height) + 1;
+        int nodes = leftNode.nodes + rightNode.nodes + 1;
+        return new Info(height, nodes);
     }
 
 
-
-    public static class Info{
+    public static class Info {
         public int height;
         public int nodes;
 
-        public Info(int height,int nodes){
+        public Info(int height, int nodes) {
             this.height = height;
             this.nodes = nodes;
         }

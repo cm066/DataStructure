@@ -9,10 +9,11 @@ import java.util.Arrays;
 public class CoinChange {
 
     public static void main(String[] args) {
-        int[] coins = {1,2,5};
+        int[] coins = {1, 2, 5};
         int i = coinChange(coins, 11);
         System.out.println(i);
     }
+
     public static int coinChange(int[] coins, int amount) {
         int max = amount + 1;
         int[] dp = new int[amount + 1];

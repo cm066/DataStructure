@@ -11,34 +11,35 @@ public class HeLanArr {
     public static void main(String[] args) {
 
 //        int[] arr = {1,4,2,6,3,4,5,1,7,1,3,4};
-        int[] arr = {1,5,2,3,4,5,6};
-        int[] ints = heLanArr(arr, 0, arr.length-1, 4);
+        int[] arr = {1, 5, 2, 3, 4, 5, 6};
+        int[] ints = heLanArr(arr, 0, arr.length - 1, 4);
         int[] partition = partition(arr, 0, arr.length - 1, 4);
         Swap.printArr(ints);
         Swap.printArr(partition);
     }
-    public static int[] heLanArr(int[] arr,int L,int R,int num){
-        int less= L - 1;
-        int more = R +1;
+
+    public static int[] heLanArr(int[] arr, int L, int R, int num) {
+        int less = L - 1;
+        int more = R + 1;
         int cur = L;
-        while (cur < more){
-            if (arr[cur] < num){
-                Swap.swap(arr,++less,cur++);
-            }else if (arr[cur] > num){
-                Swap.swap(arr,--more,cur);
-            }else {
+        while (cur < more) {
+            if (arr[cur] < num) {
+                Swap.swap(arr, ++less, cur++);
+            } else if (arr[cur] > num) {
+                Swap.swap(arr, --more, cur);
+            } else {
                 cur++;
             }
         }
-        System.out.println(less +"==" +more);
-        return new int[]{less+1,more-1};
+        System.out.println(less + "==" + more);
+        return new int[]{less + 1, more - 1};
     }
 
     public static int[] partition(int[] arr, int L, int R, int p) {
         int less = L - 1;
         int more = R + 1;
-        while(L < more) {
-            if(arr[L] < p) {
+        while (L < more) {
+            if (arr[L] < p) {
                 swap(arr, ++less, L++);
             } else if (arr[L] > p) {
                 swap(arr, --more, L);
@@ -46,7 +47,7 @@ public class HeLanArr {
                 L++;
             }
         }
-        return new int[] { less + 1, more - 1 };
+        return new int[]{less + 1, more - 1};
     }
 
     public static void swap(int[] arr, int i, int j) {

@@ -18,30 +18,33 @@ public class StackQueue {
     }
 }
 
-class SQueue{
+class SQueue {
     Stack<Integer> data;
     Stack<Integer> help;
-    public SQueue(){
+
+    public SQueue() {
         data = new Stack<>();
         help = new Stack<>();
     }
 
-    public void push(Integer a ){
+    public void push(Integer a) {
         data.push(a);
     }
-    public Integer pop(){
-        if (data.size() == 1){
+
+    public Integer pop() {
+        if (data.size() == 1) {
             return data.pop();
         }
-        while (data.size() > 1){
+        while (data.size() > 1) {
             help.push(data.pop());
         }
         int ins = data.pop();
-        swap();;
+        swap();
+        ;
         return ins;
     }
 
-    public void swap(){
+    public void swap() {
         Stack<Integer> tmp = data;
         data = help;
         help = tmp;

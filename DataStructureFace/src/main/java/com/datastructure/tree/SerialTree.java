@@ -15,32 +15,33 @@ public class SerialTree {
 
     /**
      * 前序序列化
+     *
      * @param head
      * @return
      */
-    public static String preSerialTree(TreeNode head){
-        if (head == null){
+    public static String preSerialTree(TreeNode head) {
+        if (head == null) {
             return "#_";
         }
-        String res = head.val+"_";
+        String res = head.val + "_";
         res += preSerialTree(head.left);
         res += preSerialTree(head.right);
-        return  res;
+        return res;
     }
 
-    public static TreeNode reconPreOrderString(String preStr){
+    public static TreeNode reconPreOrderString(String preStr) {
         String[] s = preStr.split("_");
-        Queue<String>  queue = new LinkedList<>();
+        Queue<String> queue = new LinkedList<>();
         for (int i = 0; i < s.length; i++) {
             queue.add(s[i]);
         }
         return reconPreOrder(queue);
     }
 
-    public static TreeNode reconPreOrder( Queue<String>  queue){
+    public static TreeNode reconPreOrder(Queue<String> queue) {
 
         String value = queue.poll();
-        if (value.equals("#")){
+        if (value.equals("#")) {
             return null;
         }
         TreeNode head = new TreeNode(Integer.valueOf(value));

@@ -13,18 +13,18 @@ public class GraphMain {
 
     public static void main(String[] args) {
         int n = 5;
-        String Vertexs[] = {"A","B","C","D","E"};
+        String Vertexs[] = {"A", "B", "C", "D", "E"};
         Graph graph = new Graph(n);
         for (String vertex : Vertexs) {
             graph.insertVertex(vertex);
         }
         //添加边
         //a-b a-c b-c b-d b-e
-        graph.insertEdge(0,1,1);//表示的是a-b这条边，权重为1
-        graph.insertEdge(0,2,1);
-        graph.insertEdge(1,2,1);
-        graph.insertEdge(1,3,1);
-        graph.insertEdge(1,4,1);
+        graph.insertEdge(0, 1, 1);//表示的是a-b这条边，权重为1
+        graph.insertEdge(0, 2, 1);
+        graph.insertEdge(1, 2, 1);
+        graph.insertEdge(1, 3, 1);
+        graph.insertEdge(1, 4, 1);
 
         //显示邻接矩阵
         graph.showGraph();

@@ -23,24 +23,26 @@ public class OtherStack {
     }
 }
 
-class QStack{
+class QStack {
     Queue<Integer> data;
     Queue<Integer> help;
-    public QStack(){
+
+    public QStack() {
         data = new LinkedList<>();
         help = new LinkedList<>();
     }
 
-    public void push(Integer a){
+    public void push(Integer a) {
         data.add(a);
     }
-    public Integer pop(){
-        while (data.size() != 1){
+
+    public Integer pop() {
+        while (data.size() != 1) {
             help.add(data.poll());
         }
         int tem = data.poll();
         //然后把help的还原回去
-        while (!help.isEmpty()){
+        while (!help.isEmpty()) {
             data.add(help.poll());
         }
         return tem;

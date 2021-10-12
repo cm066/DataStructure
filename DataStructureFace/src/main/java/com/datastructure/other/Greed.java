@@ -14,25 +14,25 @@ public class Greed {
         k1.add("北京");
         k1.add("上海");
         k1.add("天津");
-        casts.put("k1",k1);
+        casts.put("k1", k1);
         HashSet<String> k2 = new HashSet<>();
         k2.add("广州");
         k2.add("北京");
         k2.add("深圳");
-        casts.put("k2",k2);
+        casts.put("k2", k2);
         HashSet<String> k3 = new HashSet<>();
         k3.add("成都");
         k3.add("上海");
         k3.add("杭州");
-        casts.put("k3",k3);
+        casts.put("k3", k3);
         HashSet<String> k4 = new HashSet<>();
         k4.add("上海");
         k4.add("天津");
-        casts.put("k4",k4);
+        casts.put("k4", k4);
         HashSet<String> k5 = new HashSet<>();
         k5.add("杭州");
         k5.add("大连");
-        casts.put("k5",k5);
+        casts.put("k5", k5);
         HashSet<String> all = new HashSet<>();
         all.add("北京");
         all.add("上海");
@@ -46,7 +46,7 @@ public class Greed {
         ArrayList<String> selects = new ArrayList<>();
         HashSet<String> temSet = new HashSet<>();
         String maxKey = null;
-        while (all.size() != 0){
+        while (all.size() != 0) {
 
             maxKey = null;
             for (String key : casts.keySet()) {
@@ -54,12 +54,12 @@ public class Greed {
                 HashSet<String> ares = casts.get(key);
                 temSet.addAll(ares);
                 temSet.retainAll(all);
-                if (temSet.size() >0 &&(maxKey == null || temSet.size() > casts.get(maxKey).size())){
+                if (temSet.size() > 0 && (maxKey == null || temSet.size() > casts.get(maxKey).size())) {
                     maxKey = key;
 
                 }
             }
-            if (maxKey != null){
+            if (maxKey != null) {
 //                HashSet<String> hashSet = casts.get(maxKey);
                 selects.add(maxKey);
                 all.removeAll(casts.get(maxKey));

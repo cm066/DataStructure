@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeoutException;
 
 public class Task01 {
-    public static final String QUEUE_NAME ="hello";
+    public static final String QUEUE_NAME = "hello";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         Channel channel = RabbitMqUtils.getChannel();
@@ -20,8 +20,8 @@ public class Task01 {
          * 4、是否自动删除，最后一个消费这端开连接以后，该队一句是否自动删除
          * 5、其它参数
          */
-        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
-        String message ="hello world";
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        String message = "hello world";
         /**
          * 发送一个消费
          * 1、发送到那个交换机
@@ -30,10 +30,10 @@ public class Task01 {
          * 4、发送消息的消息体
          */
         Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext()){
+        while (scanner.hasNext()) {
             String next = scanner.next();
-            channel.basicPublish("",QUEUE_NAME,null,next.getBytes());
-            System.out.println("消息发送完毕"+next);
+            channel.basicPublish("", QUEUE_NAME, null, next.getBytes());
+            System.out.println("消息发送完毕" + next);
         }
 
 

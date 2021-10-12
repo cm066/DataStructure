@@ -13,6 +13,7 @@ public class MinCostClimbingStairs {
 
     /**
      * TODO 动态规划的思想
+     *
      * @param cost
      * @return
      */

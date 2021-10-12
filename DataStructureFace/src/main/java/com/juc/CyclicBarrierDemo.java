@@ -14,8 +14,8 @@ public class CyclicBarrierDemo {
             System.out.println("集齐七颗龙珠，召唤神兽");
         });
         for (int i = 1; i <= 7; i++) {
-            new Thread(()->{
-                System.out.println("集齐第"+Thread.currentThread().getName()+"颗龙珠");
+            new Thread(() -> {
+                System.out.println("集齐第" + Thread.currentThread().getName() + "颗龙珠");
                 try {
                     barrier.await();
                 } catch (InterruptedException e) {
@@ -23,7 +23,7 @@ public class CyclicBarrierDemo {
                 } catch (BrokenBarrierException e) {
                     e.printStackTrace();
                 }
-            },String.valueOf(i)).start();
+            }, String.valueOf(i)).start();
         }
     }
 }

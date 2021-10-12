@@ -16,8 +16,8 @@ public class CountDownLatchDemo {
         for (int i = 0; i < 6; i++) {
 
             int finalI = i;
-            new Thread(()->{
-                System.out.println("第"+ finalI +"个同学出教室");
+            new Thread(() -> {
+                System.out.println("第" + finalI + "个同学出教室");
                 downLatch.countDown();
             }).start();
 
