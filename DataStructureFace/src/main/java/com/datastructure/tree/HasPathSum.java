@@ -1,7 +1,5 @@
 package com.datastructure.tree;
 
-import java.util.Stack;
-
 /**
  * 输入：root = [5,4,8,11,null,13,4,7,2,null,null,null,1],targetSum = 22
  * 输出：true
@@ -19,7 +17,6 @@ public class HasPathSum {
 
     /**
      * 采用迭代的方式去遍历树，然后加上这个树
-     *
      * @param root
      * @param targetSum
      * @return

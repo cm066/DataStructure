@@ -20,33 +20,16 @@
     <!--    演示循环依赖，官方推荐的是set配置来解决，现在的问题就是底层代码是如何解决循环依赖这个问题的
             所谓的循环依赖是当一个对象进行初始化的时候发现要另外一个对象，但容器中并没有这个对象
     -->
-<!--    <bean id="a" class="com.mc.bean.A">-->
-<!--        <property name="name" value="哈哈"/>-->
+    <bean id="a" class="com.mc.bean.A">
+        <property name="name" value="哈哈"/>
 <!--        <property name="b" ref="b"/>-->
-<!--    </bean>-->
+    </bean>
+    <aop:aspectj-autoproxy expose-proxy="true"/>
+    <bean id="test" class="com.mc.aop.TestBean"></bean>
+    <bean class="com.mc.aop.AspectJTest"></bean>
 <!--    <bean id="b" class="com.mc.bean.B">-->
 <!--        <property name="a" ref="a"/>-->
 <!--        <property name="age" value="20"/>-->
 <!--    </bean>-->
-<!--    <bean id="b" class="com.mc.bean.B">-->
-<!--        <property name="a" value="#{a}"/>-->
-<!--        <property name="age" value="20"/>-->
-<!--    </bean>-->
-    <bean id="userService"  class="com.mc.aop.service.UserServiceImpl"/>
-    <bean name="myAdvice" class="com.mc.aop.advice.MyAdvice"/>
-    <aop:config>
-        <aop:pointcut id="pc" expression="execution(* com.mc.aop..*ServiceImpl.*(..))"/>
-        <aop:aspect ref="myAdvice">
-            <aop:before method="before" pointcut-ref="pc"/>
-            <aop:after method="after" pointcut-ref="pc"/>
-            <aop:around method="around" pointcut-ref="pc"/>
-            <aop:after-throwing method="afterException" pointcut-ref="pc"/>
-            <aop:after-returning method="afterReturning" pointcut-ref="pc"/>
-        </aop:aspect>
-    </aop:config>
 
-    <bean id="userMan" class="com.mc.edit.MyEdit">
-
-
-    </bean>
 </beans>

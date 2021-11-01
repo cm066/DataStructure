@@ -3,6 +3,7 @@ package com.csdn;
 
 /**
  * 每个数组代表⼀个⾼度，选两个任意的柱⼦往⾥边倒⽔，能最多倒多少⽔。
+ * @author wxr
  */
 public class MaxArea {
 
