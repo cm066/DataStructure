@@ -32,7 +32,7 @@ public class MaxSum {
     /**
      * 这个是获取子数组的最大和
      * @param arr 愿数组
-     * @return 返回子数组最大累积和
+     * @return 返回子数组最大累积和 ,
      */
     public static int maxSum(int[] arr) {
         if (arr == null || arr.length == 0){
@@ -49,7 +49,7 @@ public class MaxSum {
     }
 
     /**
-     * 这个是求出最大累积和的子数组，并将子数组反回去
+     * 这个是求出最大累积和的子数组，并将子数组反回去 todo
      * @param arr
      * @return
      */
