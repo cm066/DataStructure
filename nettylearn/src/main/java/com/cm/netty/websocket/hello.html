@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form onsubmit="return false">
+        <textarea name="message" style="height: 300px;width: 300px"></textarea>
+        <input type="button" value="发送消息" onclick="send(this.form.message.value)">
+        <textarea id="responseText"style="height: 300px;width: 300px"></textarea>
+        <input type="button" value="清空内容" onclick="document.getElementById('responseText').value=' '">
+    </form>
+    <script>
+        var socket;
+        if (window.WebSocket){
+            socket = new WebSocket("ws://127.0.0.1:7001/hello");
+
+            //收到服务器发回来的消息
+            socket.onmessage =function (ev) {
+                // alert(11111)
+                var  rt = document.getElementById("responseText");
+                rt.value = rt.value + "\n" + ev.data;
+            }
+            //相当于连接开启
+            socket.onopen = function (ev) {
+                // alert(222222)
+                var  rt = document.getElementById("responseText");
+                rt.value = "连接开启了";
+            }
+            socket.onclose= function (ev) {
+                // alert(3333333)
+                var  rt = document.getElementById("responseText");
+                rt.value = rt.value + "\n" + "连接关闭了";
+            }
+        }else{
+            alert("当前流浪器不支持WebSocket")
+        }
+        function send(message) {
+            if (!window.socket){
+                // alert(5555555)
+                //判断长连接是否创建好了
+                return;
+            }
+            // alert(6666666)
+            if (socket.readyState == WebSocket.OPEN){
+                // alert(message)
+                socket.send(message)
+            }else {
+                alert("连接还没有开启")
+            }
+        }
+    </script>
+</body>
+</html>
